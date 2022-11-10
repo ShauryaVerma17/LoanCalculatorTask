@@ -109,7 +109,7 @@ namespace Task1b
             }
 
 
-            //Testing 
+            // Testing 
             Log.Debug("Application has reached the end");
             //log.Warn("Testing warning option for log");
 
