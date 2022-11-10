@@ -1,11 +1,7 @@
-12:58:55,900 DEBUG - Application has reached the end
-13:02:50,351 INFO - Student Loan payment amount was calculated to be equal to 101.48 (PA : 43 and Time : 34 year/s)
-13:02:50,421 DEBUG - Application has reached the end
-09:29:29,941 INFO - Student Loan payment amount was calculated to be equal to 1392000 (PA : 1200000 and Time : 4 year/s)
-09:29:29,971 DEBUG - Application has reached the end
-09:33:46,367 ERROR - Invalid Option (6) was chosen
-09:33:46,389 DEBUG - Application has reached the end
-13:42:48,555 INFO - Personal Loan payment amount was calculated to be equal to 127900.416 (PA : 123456 and Time : 0.6 year/s)
-13:42:48,616 DEBUG - Application has reached the end
-13:43:18,917 ERROR - Invalid Option (6) was chosen
-13:43:18,944 DEBUG - Application has reached the end
+10:07:08,797 DEBUG - Application has reached the end
+10:07:25,690 INFO - Home Loan payment amount was calculated to be equal to 10.8 (PA : 10 and Time : 1 year/s)
+10:07:25,730 DEBUG - Application has reached the end
+10:07:40,208 INFO - Student Loan payment amount was calculated to be equal to 10.4 (PA : 10 and Time : 1 year/s)
+10:07:40,250 DEBUG - Application has reached the end
+10:07:46,982 INFO - Personal Loan payment amount was calculated to be equal to 10.6 (PA : 10 and Time : 1 year/s)
+10:07:47,023 DEBUG - Application has reached the end

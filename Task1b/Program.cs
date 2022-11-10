@@ -19,7 +19,7 @@ namespace Task1b
             string loanType = "";
             double loanAmmount;
             double loanTime;
-
+            bool validOperation = true;
             Console.WriteLine("Loan Types : ");
             Console.WriteLine("1) Home Loan");
             Console.WriteLine("2) Student Loan");
@@ -46,15 +46,18 @@ namespace Task1b
                         default:
                             Console.WriteLine($"Option {option} Does Not Exist");
                             Log.Error($"Invalid Option ({option}) was chosen");
+                            validOperation = false;
                             break;
 
                     }
 
+                if (validOperation)
+                {
                     Console.WriteLine($"Calculating Loan Payment and Interest for {loanType}\n\n");
 
                     try
                     {
-                        
+
                         Console.Write("Enter the Principle Amount : ");
                         loanAmmount = Convert.ToDouble(Console.ReadLine());
 
@@ -63,30 +66,24 @@ namespace Task1b
 
                         if (loanTime > 0 && loanAmmount > 0)
                         {
-                        switch (option)
-                        {
-                            case 1:
-                                HomeLoan Loan = new HomeLoan(loanAmmount, loanTime);
-                                double total = Loan.LoanCalc();
-                                Console.WriteLine($"The total payable amount for your {loanType} is {total} with a total interest of {Loan.InterestCalc()}");
-                                Log.Info($"{loanType} payment amount was calculated to be equal to {total} (PA : {loanAmmount} and Time : {loanTime} year/s)");
-                                break;
-                            case 2:
-                                StudentLoan Loan2 = new StudentLoan(loanAmmount, loanTime);
-                                double total2 = Loan2.LoanCalc();
-                                Console.WriteLine($"The total payable amount for your {loanType} is {total2} with a total interest of {Loan2.InterestCalc()}");
-                                Log.Info($"{loanType} payment amount was calculated to be equal to {total2} (PA : {loanAmmount} and Time : {loanTime} year/s)");
-                                break;
-                            case 3:
-                                PersonalLoan Loan3 = new PersonalLoan(loanAmmount, loanTime);
-                                double total3 = Loan3.LoanCalc();
-                                Console.WriteLine($"The total payable amount for your {loanType} is {total3} with a total interest of {Loan3.InterestCalc()}");
-                                Log.Info($"{loanType} payment amount was calculated to be equal to {total3} (PA : {loanAmmount} and Time : {loanTime} year/s)");
-                                break;
-                            default:
-                                break;
+                            switch (option)
+                            {
+                                case 1:
+                                    var loanCalculator = new LoanCalculator(new HomeLoan(loanAmmount, loanTime), loanType);
+                                    loanCalculator.CalculateLoan();
+                                    break;
+                                case 2:
+                                    var loanCalculator2 = new LoanCalculator(new StudentLoan(loanAmmount, loanTime), loanType);
+                                    loanCalculator2.CalculateLoan();
+                                    break;
+                                case 3:
+                                    var loanCalculator3 = new LoanCalculator(new PersonalLoan(loanAmmount, loanTime), loanType);
+                                    loanCalculator3.CalculateLoan();
+                                    break;
+                                default:
+                                    break;
 
-                        }
+                            }
                         }
                         else
                         {
@@ -101,7 +98,8 @@ namespace Task1b
                         Console.WriteLine("\nInvalid Principle Ammount or Time");
                         Log.Error($"Invalid Principle Ammount or Time was entered");
                     }
-                
+
+                }
 
             }
             catch(Exception)
