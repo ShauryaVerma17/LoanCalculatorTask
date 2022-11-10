@@ -12,11 +12,11 @@ namespace Task1b
 
     class Program
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger("Program.cs");
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger("Program.cs");
         static void Main(string[] args)
         {
             int option;
-            string loanType;
+            string loanType = "";
             double loanAmmount;
             double loanTime;
 
@@ -29,26 +29,25 @@ namespace Task1b
             try
             {
                 option = Convert.ToInt32(Console.ReadLine());
-                if (option <1 || option > 3)
-                {
-                    Console.WriteLine($"Option {option} Does Not Exist");
-                    log.Error($"Invalid Option ({option}) was chosen");
-                }
-                else
-                {
+                
                     Console.Clear();
 
-                    if (option == 1)
+                    switch (option)
                     {
-                        loanType = "Home Loan";
-                    }
-                    else if (option == 2)
-                    {
-                        loanType = "Student Loan";
-                    }
-                    else
-                    {
-                        loanType = "Personal Loan";
+                        case 1:
+                            loanType = "Home Loan";
+                            break;
+                        case 2:
+                            loanType = "Student Loan";
+                            break;
+                        case 3:
+                            loanType = "Personal Loan";
+                            break;
+                        default:
+                            Console.WriteLine($"Option {option} Does Not Exist");
+                            Log.Error($"Invalid Option ({option}) was chosen");
+                            break;
+
                     }
 
                     Console.WriteLine($"Calculating Loan Payment and Interest for {loanType}\n\n");
@@ -64,32 +63,35 @@ namespace Task1b
 
                         if (loanTime > 0 && loanAmmount > 0)
                         {
-                            if (option == 1)
-                            {
+                        switch (option)
+                        {
+                            case 1:
                                 HomeLoan Loan = new HomeLoan(loanAmmount, loanTime);
                                 double total = Loan.LoanCalc();
                                 Console.WriteLine($"The total payable amount for your {loanType} is {total} with a total interest of {Loan.InterestCalc()}");
-                                log.Info($"{loanType} payment amount was calculated to be equal to {total} (PA : {loanAmmount} and Time : {loanTime} year/s)");
-                            }
-                            else if (option == 2)
-                            {
-                                StudentLoan Loan = new StudentLoan(loanAmmount, loanTime);
-                                double total = Loan.LoanCalc();
-                                Console.WriteLine($"The total payable amount for your {loanType} is {total} with a total interest of {Loan.InterestCalc()}");
-                                log.Info($"{loanType} payment amount was calculated to be equal to {total} (PA : {loanAmmount} and Time : {loanTime} year/s)");
-                            }
-                            else
-                            {
-                                PersonalLoan Loan = new PersonalLoan(loanAmmount, loanTime);
-                                double total = Loan.LoanCalc();
-                                Console.WriteLine($"The total payable amount for your {loanType} is {total} with a total interest of {Loan.InterestCalc()}");
-                                log.Info($"{loanType} payment amount was calculated to be equal to {total} (PA : {loanAmmount} and Time : {loanTime} year/s)");
-                            } 
+                                Log.Info($"{loanType} payment amount was calculated to be equal to {total} (PA : {loanAmmount} and Time : {loanTime} year/s)");
+                                break;
+                            case 2:
+                                StudentLoan Loan2 = new StudentLoan(loanAmmount, loanTime);
+                                double total2 = Loan2.LoanCalc();
+                                Console.WriteLine($"The total payable amount for your {loanType} is {total2} with a total interest of {Loan2.InterestCalc()}");
+                                Log.Info($"{loanType} payment amount was calculated to be equal to {total2} (PA : {loanAmmount} and Time : {loanTime} year/s)");
+                                break;
+                            case 3:
+                                PersonalLoan Loan3 = new PersonalLoan(loanAmmount, loanTime);
+                                double total3 = Loan3.LoanCalc();
+                                Console.WriteLine($"The total payable amount for your {loanType} is {total3} with a total interest of {Loan3.InterestCalc()}");
+                                Log.Info($"{loanType} payment amount was calculated to be equal to {total3} (PA : {loanAmmount} and Time : {loanTime} year/s)");
+                                break;
+                            default:
+                                break;
+
+                        }
                         }
                         else
                         {
                             Console.WriteLine("\nPrinciple ammount and time must be positive");
-                            log.Error($"Invalid Principle Ammount or Time was entered");
+                            Log.Error($"Invalid Principle Ammount or Time was entered");
                         }
 
 
@@ -97,20 +99,20 @@ namespace Task1b
                     catch (Exception)
                     {
                         Console.WriteLine("\nInvalid Principle Ammount or Time");
-                        log.Error($"Invalid Principle Ammount or Time was entered");
+                        Log.Error($"Invalid Principle Ammount or Time was entered");
                     }
-                }
+                
 
             }
             catch(Exception)
             {
                 Console.WriteLine("\nInvalid Option");
-                log.Error("Invalid Option was entered");
+                Log.Error("Invalid Option was entered");
             }
 
 
             //Testing 
-            log.Debug("Application has reached the end");
+            Log.Debug("Application has reached the end");
             //log.Warn("Testing warning option for log");
 
             Console.ReadLine();

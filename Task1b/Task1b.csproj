@@ -49,7 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HomeLoan.cs" />
-    <Compile Include="ILoanCalc.cs" />
+    <Compile Include="ILoan.cs" />
+    <Compile Include="LoanCalculator.cs" />
     <Compile Include="Loans.cs" />
     <Compile Include="PersonalLoan.cs" />
     <Compile Include="Program.cs" />

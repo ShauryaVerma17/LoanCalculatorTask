@@ -1,7 +1,7 @@
 ﻿
 namespace Task1b
 {
-    public interface ILoanCalc {
+    public interface ILoan {
 
         double Rate { get; set; }
 

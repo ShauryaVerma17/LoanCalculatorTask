@@ -1,24 +1,24 @@
 ﻿
 namespace Task1b
 {
-    public abstract class Loans : ILoanCalc
+    public abstract class Loans : ILoan
     {
         public double Rate { get; set; }
         public double PrincipalAmount { get; set; }
         public double Time { get; set; }
 
-        private double Interest;
-        private double TotalAmount;
+        private double _interest;
+        private double _totalAmount;
         public double LoanCalc()
         {
-            TotalAmount = PrincipalAmount + InterestCalc();
-            return TotalAmount;
+            _totalAmount = PrincipalAmount + InterestCalc();
+            return _totalAmount;
         }
 
         public double InterestCalc()
         {
-            Interest = PrincipalAmount * Rate * Time / 100;
-            return Interest;
+            _interest = PrincipalAmount * Rate * Time / 100;
+            return _interest;
         }
     }
 
